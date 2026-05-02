@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Learn more about WanderLux Travel Agency, our mission, travel consultants, and customer-focused services." />
+  <meta name="keywords" content="About WanderLux, travel agency, mission, travel consultants, customer service" />
+  <meta name="author" content="Manjinder Kaur" />
+  <title>About Us | WanderLux</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Times, Roman, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f6f9fc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: skyblue;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #e4643d;
+      transform: translateY(-2px);
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0a4d68;
+    }
+
+    .logo span {
+      color: #ff7b54;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: bl;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #0a4d68;
+    }
+
+    /* Hero */
+    .page-hero {
+      min-height: 48vh;
+      background:
+        linear-gradient(rgba(10, 77, 104, 0.68), rgba(10, 77, 104, 0.68)),
+        url("https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .page-hero-content {
+      max-width: 760px;
+      margin: auto;
+      animation: fadeUp 1s ease;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 14px;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      color: #f2f2f2;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2.2rem;
+      color: #0a4d68;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      max-width: 720px;
+      margin: auto;
+      color: #666;
+    }
+
+    /* Story */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .story-content h2 {
+      font-size: 2.1rem;
+      color: #0a4d68;
+      margin-bottom: 18px;
+    }
+
+    .story-content p {
+      color: #555;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    /* Stats */
+    .stats-section {
+      background: linear-gradient(to right, #edf6ff, #f8fbff);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 28px 20px;
+      border-radius: 22px;
+      text-align: center;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      color: #ff7b54;
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      color: #555;
+      font-weight: 600;
+    }
+
+    /* Mission Vision */
+    .mv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .mv-card {
+      background: white;
+      padding: 30px 24px;
+      border-radius: 22px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+      border: 1px solid #eef2f6;
+    }
+
+    .mv-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .mv-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .mv-card h3 {
+      color: #0a4d68;
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+    }
+
+    .mv-card p {
+      color: #666;
+      font-size: 0.97rem;
+    }
+
+    /* Team */
+    .team-section {
+      background: linear-gradient(to right, #fdfefe, #f7fbff);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .team-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+      transition: 0.3s ease;
+      text-align: center;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .team-content {
+      padding: 24px;
+    }
+
+    .team-content h3 {
+      color: #0a4d68;
+      margin-bottom: 6px;
+      font-size: 1.25rem;
+    }
+
+    .team-role {
+      color: #ff7b54;
+      font-weight: bold;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .team-content p {
+      color: #666;
+      font-size: 0.96rem;
+    }
+
+    /* Why choose */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .why-card {
+      background: white;
+      padding: 26px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .why-icon {
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+    }
+
+    .why-card h3 {
+      color: #0a4d68;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .why-card p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* CTA */
+    .cta-box {
+      background:
+        linear-gradient(rgba(255, 123, 84, 0.92), rgba(255, 123, 84, 0.92)),
+        url("https://images.unsplash.com/photo-1493558103817-58b2924bce98?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      padding: 60px 30px;
+      border-radius: 28px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta-box h2 {
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      max-width: 720px;
+      margin: 0 auto 22px;
+      color: #fff7f3;
+    }
+
+    .btn-light {
+      background: white;
+      color: #ff7b54;
+    }
+
+    .btn-light:hover {
+      background: #f6f6f6;
+    }
+
+    footer {
+      background: #0a4d68;
+      color: white;
+      padding: 24px 0;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .stats-grid,
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .team-grid,
+      .mv-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .story-image img {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+
+      .stats-grid,
+      .team-grid,
+      .mv-grid,
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .section-title h2,
+      .story-content h2,
+      .cta-box h2 {
+        font-size: 1.8rem;
+      }
+
+      .story-image img {
+        height: 280px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container navbar">
+      <div class="logo">WanderLux <span>Travel Agency</span></div>
+
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Destinations</a></li>
+          <li><a href="calculator.html">Trip Cost</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="appointment.html" class="btn">Book Now</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <h1>About WanderLux Travel Agency</h1>
+      <p>
+        We create memorable travel experiences through personalised planning,
+        professional guidance, and customer-focused service.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image">
+          <img src="Paris-France-cityscape-destinations-560x420.jpg">
+        </div>
+
+        <div class="story-content">
+          <h2>Our Story</h2>
+          <p>
+            WanderLux Travel Agency was founded to offer travelers a reliable, personalized, and professional approach to trip planning. We believe every journey is unique, so we design experiences that align with each client’s interests, expectations, and budget.
+          </p>
+          <p>
+            Whether you’re seeking luxury holidays, guided tours, honeymoon escapes, or custom travel packages, WanderLux combines convenience, creativity, and comfort. Our goal is to replace planning stress with confidence, clarity, and excitement.
+          </p>
+          <p>
+            From the first inquiry to the final destination, our dedicated team works closely with you to ensure every trip is smooth, enjoyable, and unforgettable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>WanderLux at a Glance</h2>
+        <p>
+          We are committed to delivering excellent travel support, personalised service,
+          and exceptional customer experiences.
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>50+</h3>
+          <p>Global Destinations</p>
+        </div>
+        <div class="stat-card">
+          <h3>500+</h3>
+          <p>Happy Travellers</p>
+        </div>
+        <div class="stat-card">
+          <h3>24/7</h3>
+          <p>Customer Support</p>
+        </div>
+        <div class="stat-card">
+          <h3>100%</h3>
+          <p>Customised Packages</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Mission, Vision & Values</h2>
+        <p>
+          WanderLux is guided by a strong commitment to quality service, trusted advice,
+          and meaningful travel experiences.
+        </p>
+      </div>
+
+      <div class="mv-grid">
+        <div class="mv-card">
+          <div class="mv-icon"></div>
+          <h3>Our Mission</h3>
+          <p>
+            To provide personalised and stress-free travel planning services that help
+            customers explore the world with comfort, confidence, and convenience.
+          </p>
+        </div>
+
+        <div class="mv-card">
+          <div class="mv-icon"></div>
+          <h3>Our Vision</h3>
+          <p>
+            To become a trusted travel brand known for creating memorable journeys,
+            outstanding customer service, and innovative travel solutions.
+          </p>
+        </div>
+
+        <div class="mv-card">
+          <div class="mv-icon"></div>
+          <h3>Our Values</h3>
+          <p>
+            We value professionalism, honesty, customer care, flexibility, and the belief
+            that every travel experience should be meaningful and enjoyable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Meet Our Travel Consultants</h2>
+        <p>
+          Our experienced team is dedicated to helping clients choose the right destinations,
+          services, and travel packages.
+        </p>
+      </div>
+
+        </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Travellers Trust Us</h2>
+        <p>
+          WanderLux combines expertise, attention to detail, and customer care to deliver
+          dependable and enjoyable travel services.
+        </p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"></div>
+          <h3>Personalised Planning</h3>
+          <p>Every itinerary is designed according to client preferences, budget, and travel goals.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"></div>
+          <h3>Wide Service Range</h3>
+          <p>We offer holiday packages, flights, hotels, tours, honeymoon specials, and more.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"></div>
+          <h3>Trusted Support</h3>
+          <p>Our team provides responsive assistance before, during, and after your journey.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"></div>
+          <h3>Quality Experience</h3>
+          <p>We focus on comfort, reliability, and memorable travel moments for every client.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 WanderLux Travel Agency. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
+</body>
+</html>

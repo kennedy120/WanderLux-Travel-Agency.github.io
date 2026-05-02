@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Book an appointment with WanderLux Travel Agency for customised travel planning." />
+  <meta name="keywords" content="WanderLux appointment, travel consultation, booking form, travel planner" />
+  <meta name="author" content="Manjinder Kaur" />
+  <title>Appointment Request | WanderLux</title>
+
+  <style>
+    * {
+    margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Times, Roman, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f6f9fc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: skyblue;
+      color: #fff;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #e4643d;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: #0a4d68;
+    }
+
+    .btn-secondary:hover {
+      background: #08384b;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0a4d68;
+    }
+
+    .logo span {
+      color: #ff7b54;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ff7b54;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #0a4d68;
+    }
+
+    /* Hero */
+    .page-hero {
+      min-height: 45vh;
+      background:
+        linear-gradient(rgba(10, 77, 104, 0.68), rgba(10, 77, 104, 0.68)),
+        url("https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .page-hero-content {
+      max-width: 760px;
+      margin: auto;
+      animation: fadeUp 1s ease;
+    }
+
+    .page-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 14px;
+    }
+
+    .page-hero p {
+      font-size: 1.05rem;
+      color: #f2f2f2;
+    }
+
+    /* Main */
+    .appointment-section {
+      padding: 80px 0;
+      margin-top: -40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .appointment-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .form-card,
+    .info-card,
+    .success-card {
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-card {
+      padding: 32px;
+    }
+
+    .form-card h2 {
+      color: #0a4d68;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-card .subtext {
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #0a4d68;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 14px;
+      border: 1px solid #d9e1ea;
+      border-radius: 14px;
+      font-size: 1rem;
+      outline: none;
+      background: #fbfdff;
+      transition: 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #ff7b54;
+      box-shadow: 0 0 0 3px rgba(255, 123, 84, 0.12);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .error-message {
+      display: none;
+      margin-top: 14px;
+      color: #d93025;
+      font-size: 0.94rem;
+    }
+
+    .side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .info-card {
+      padding: 28px;
+      background: linear-gradient(to right, #edf6ff, #f8fbff);
+    }
+
+    .info-card h3 {
+      color: #0a4d68;
+      font-size: 1.5rem;
+      margin-bottom: 14px;
+    }
+
+    .info-card p {
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .info-list li {
+      margin-bottom: 12px;
+      color: #444;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .info-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #ff7b54;
+      font-weight: bold;
+    }
+
+    .success-card {
+      padding: 28px;
+      border: 2px solid #eef3f8;
+    }
+
+    .success-card h3 {
+      color: #0a4d68;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    .placeholder-text {
+      color: #777;
+      font-size: 0.98rem;
+    }
+
+    .success-message {
+      display: none;
+      animation: fadeUp 0.6s ease;
+    }
+
+    .success-badge {
+      display: inline-block;
+      background: #eafaf1;
+      color: #1c8c4f;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+      margin-bottom: 14px;
+      font-size: 0.92rem;
+    }
+
+    .booking-summary {
+      margin-top: 16px;
+      background: #f8fbff;
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .booking-summary p {
+      margin-bottom: 8px;
+      color: #444;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 14px;
+      background: #fff4ef;
+      border-left: 4px solid #ff7b54;
+      border-radius: 10px;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background: #0a4d68;
+      color: white;
+      padding: 24px 0;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .appointment-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero h1 {
+        font-size: 2.4rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 0;
+        display: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .page-hero h1 {
+        font-size: 2rem;
+      }
+
+      .form-card h2 {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .page-hero p {
+        font-size: 0.95rem;
+      }
+
+      .form-card,
+      .info-card,
+      .success-card {
+        padding: 22px;
+      }
+
+      .button-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container navbar">
+      <div class="logo">WanderLux <span>Travel Agency</span></div>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Destinations</a></li>
+          <li><a href="calculator.html">Trip Cost</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="appointment.html" class="active btn">Book Now</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">&#9776;</div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container page-hero-content">
+      <h1>Request Your Travel Appointment</h1>
+      <p>
+        Book a consultation with our travel experts and let WanderLux create a personalised journey for you.
+      </p>
+    </div>
+  </section>
+
+  <section class="appointment-section">
+    <div class="container">
+      <div class="appointment-wrapper">
+
+        <div class="form-card">
+          <h2>Appointment Request Form</h2>
+          <p class="subtext">
+            Complete the form below and our travel consultant will contact you shortly.
+          </p>
+
+          <form id="appointmentForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Enter your full name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter your email address" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required />
+              </div>
+
+              <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" required />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="service">Service Type</label>
+                <select id="service" required>
+                  <option value="">Select a service</option>
+                  <option value="Holiday Package">Holiday Package</option>
+                  <option value="Guided Tour">Guided Tour</option>
+                  <option value="Flights & Hotels">Flights & Hotels</option>
+                  <option value="Honeymoon Special">Honeymoon Special</option>
+                  <option value="Custom Travel Plan">Custom Travel Plan</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write your travel preferences, destination ideas, or any special requests..." required></textarea>
+              </div>
+            </div>
+
+            <div class="error-message" id="errorMessage">
+              Please fill all required fields correctly before submitting the form.
+            </div>
+
+            <div class="button-row">
+              <button type="submit" class="btn">Submit Request</button>
+              <button type="reset" class="btn btn-secondary" id="resetBtn">Reset Form</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="side-column">
+          <div class="info-card">
+            <h3>Why Book With WanderLux?</h3>
+            <p>
+              Our experienced consultants help you plan smarter, travel better, and enjoy a smoother booking experience.
+            </p>
+         
+          </div>
+
+          <div class="success-card">
+            <h3>Request Status</h3>
+
+            <div class="placeholder-text" id="placeholderText">
+              Your appointment request summary will appear here after successful submission.
+            </div>
+
+            <div class="success-message" id="successMessage">
+              <div class="success-badge">Appointment Request Submitted</div>
+              <p>Thank you for choosing WanderLux. Your request has been recorded successfully.</p>
+
+              <div class="booking-summary">
+                <p><strong>Name:</strong> <span id="summaryName"></span></p>
+                <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="summaryPhone"></span></p>
+                <p><strong>Preferred Date:</strong> <span id="summaryDate"></span></p>
+                <p><strong>Service:</strong> <span id="summaryService"></span></p>
+              </div>
+
+              <div class="note" id="summaryMessage"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 WanderLux Travel Agency. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    const appointmentForm = document.getElementById("appointmentForm");
+    const errorMessage = document.getElementById("errorMessage");
+    const placeholderText = document.getElementById("placeholderText");
+    const successMessage = document.getElementById("successMessage");
+    const resetBtn = document.getElementById("resetBtn");
+
+    const summaryName = document.getElementById("summaryName");
+    const summaryEmail = document.getElementById("summaryEmail");
+    const summaryPhone = document.getElementById("summaryPhone");
+    const summaryDate = document.getElementById("summaryDate");
+    const summaryService = document.getElementById("summaryService");
+    const summaryMessage = document.getElementById("summaryMessage");
+
+    appointmentForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const date = document.getElementById("date").value;
+      const service = document.getElementById("service").value;
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !phone || !date || !service || !message) {
+        errorMessage.style.display = "block";
+        successMessage.style.display = "none";
+        placeholderText.style.display = "block";
+        return;
+      }
+
+      errorMessage.style.display = "none";
+
+      summaryName.textContent = name;
+      summaryEmail.textContent = email;
+      summaryPhone.textContent = phone;
+      summaryDate.textContent = date;
+      summaryService.textContent = service;
+      summaryMessage.textContent = "Customer message: " + message;
+
+      placeholderText.style.display = "none";
+      successMessage.style.display = "block";
+    });
+
+    resetBtn.addEventListener("click", function() {
+      errorMessage.style.display = "none";
+      successMessage.style.display = "none";
+      placeholderText.style.display = "block";
+    });
+  </script>
+</body>
+</html>
